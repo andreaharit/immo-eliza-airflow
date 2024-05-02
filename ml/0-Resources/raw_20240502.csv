@@ -1,0 +1,30 @@
+id,city,postal_code,district,province,price,subtype,state_construction,living_area,terrace_area,garden_area,rooms,bedrooms,bathrooms,livingroom_surface,kitchen_surface,facades,has_garden,kitchen,furnished,fireplace,swimmingpool,has_terrace,has_attic,has_basement,construction_year,epc,heating,area_total
+11357570,Seraing,4100,Liège,Liège,235000,HOUSE,GOOD,181,15,,3,3,1,,34,2,0,1,0,0,0,1,1,0,,C,GAS,532
+11357566,Aye,6900,Marche-en-Famenne,Luxembourg,210000,HOUSE,,117,,,,3,1,,,4,0,,0,0,0,1,0,1,1980,F,FUELOIL,912
+11357550,Boechout,2530,Antwerp,Antwerp,1550000,HOUSE,AS_NEW,617,,1794,,6,2,,29,3,1,1,0,0,0,0,0,0,1875,C,GAS,2335
+11328096,Zele,9240,Dendermonde,East Flanders,135000,HOUSE,GOOD,100,,,,2,1,,,2,0,1,0,0,0,0,1,0,1956,E,PELLET,
+11357549,Engis,4480,Huy,Liège,239000,HOUSE,GOOD,176,15,244,,4,1,16,11,2,1,1,0,0,0,1,1,1,1937,C,GAS,322
+11357541,Waregem,8790,Kortrijk,West Flanders,275000,HOUSE,,182,,,,3,1,,,2,0,,0,0,0,0,0,0,1966,D,GAS,529
+11357535,Pittem,8740,Tielt,West Flanders,1995000,MIXED_USE_BUILDING,GOOD,800,,,,8,7,,,,0,1,1,0,0,1,1,1,,B,FUELOIL,18262
+11357534,Pittem,8740,Tielt,West Flanders,1995000,COUNTRY_COTTAGE,GOOD,800,,,,8,7,,,,0,1,1,0,0,1,1,1,,B,FUELOIL,18262
+11357533,Beveren-leie,8791,Kortrijk,West Flanders,315000,HOUSE,GOOD,,,,,3,1,,,,0,1,0,0,0,0,1,0,2018,A,GAS,221
+11083431,Ploegsteert,7782,Mouscron,Hainaut,155000,HOUSE,GOOD,110,,,4,3,1,,,2,0,,0,0,0,1,1,0,,C,,102
+11357525,Uccle,1180,Brussels,Brussels,1950000,APARTMENT_BLOCK,TO_BE_DONE_UP,580,,,,14,7,,,,0,,0,0,0,0,0,1,1966,,,334
+11357524,Boortmeerbeek,3190,Leuven,Flemish Brabant,399000,HOUSE,GOOD,288,,,,3,2,,,4,0,1,0,1,0,1,1,0,1974,E,GAS,
+11357520,Mechelen,2800,Mechelen,Antwerp,444000,HOUSE,TO_BE_DONE_UP,272,,,,5,1,,,2,0,,0,1,0,1,0,1,1918,F,,205
+11357517,Stoumont,4987,Verviers,Liège,1090000,EXCEPTIONAL_PROPERTY,GOOD,265,,,,4,4,40,,4,0,1,0,0,0,0,0,0,1876,D,FUELOIL,19547
+11357512,Dendermonde,9200,Dendermonde,East Flanders,210000,HOUSE,TO_RENOVATE,168,,,1,3,1,,,4,0,,0,0,0,0,0,0,1958,F,FUELOIL,281
+11357511,Dendermonde,9200,Dendermonde,East Flanders,210000,HOUSE,TO_RENOVATE,168,,,1,3,1,,,4,0,,0,0,0,0,0,0,1958,F,FUELOIL,281
+11357510,Tillier,5380,Namur,Namur,495000,HOUSE,,250,86,,,6,2,40,,4,1,1,0,0,0,1,0,1,1930,,FUELOIL,957
+11114600,Hombeek,2811,Mechelen,Antwerp,359000,HOUSE,,,,,12,3,1,31,20,,0,0,0,0,0,0,1,1,1936,C,,132
+11357506,Soignies,7061,Soignies,Hainaut,420000,VILLA,,,,,,4,,,,,0,1,0,0,0,1,0,0,,E,,
+11357503,Ransart,6043,Charleroi,Hainaut,180000,HOUSE,GOOD,156,29,52,,3,1,,24,3,1,0,0,0,0,1,1,0,1950,E,FUELOIL,217
+10846819,Merksem,2170,Antwerp,Antwerp,289000,MIXED_USE_BUILDING,TO_RENOVATE,262,,30,,4,1,156,,2,1,1,0,0,0,0,0,0,,F,GAS,130
+11303004,Kortenberg,3070,Leuven,Flemish Brabant,189000,HOUSE,TO_RENOVATE,,,,,2,,,,2,0,,0,0,0,0,0,0,1900,F,GAS,50
+11357497,Beringen,3580,Hasselt,Limburg,465000,HOUSE,AS_NEW,173,25,266,1,3,1,39,12,3,1,0,0,0,0,1,0,0,2020,A,GAS,442
+11357496,Heusden-zolder,3550,Hasselt,Limburg,315000,HOUSE,AS_NEW,152,,870,1,3,1,16,10,4,1,0,0,0,0,0,0,1,1956,D,FUELOIL,1093
+11357495,Diepenbeek,3590,Hasselt,Limburg,450000,HOUSE,AS_NEW,176,21,450,1,3,2,37,11,4,1,0,0,0,0,1,0,0,1992,C,GAS,570
+11357492,Tongeren,3700,Tongeren,Limburg,329000,HOUSE,TO_BE_DONE_UP,233,1,1,,4,1,19,12,4,1,0,0,0,0,1,1,1,1972,C,FUELOIL,756
+11357487,Moen,8552,Kortrijk,West Flanders,499000,VILLA,AS_NEW,235,,650,1,3,1,43,20,4,1,0,0,0,0,0,0,1,1998,B,GAS,870
+11357486,Izegem,8870,Roeselare,West Flanders,449000,BUNGALOW,,,,,1,4,1,,,4,0,,0,0,0,0,0,0,,C,,665
+11282625,Kortemark,8610,Diksmuide,West Flanders,265000,HOUSE,GOOD,134,,,1,3,1,,,4,0,,0,0,0,0,0,0,,E,,1061
