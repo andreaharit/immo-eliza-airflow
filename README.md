@@ -40,8 +40,6 @@ And directories:
 
     mkdir -p ./logs ./plugins ./config
     
-
-
 To start the Docker compose container run:
 
     docker compose up 
@@ -62,6 +60,7 @@ When you are finished working and want to clean up your environment, run:
 <a id="Streamlit"></a>
 ### Streamlit 🖱
 </a> 
+
 
 <div style="max-height: 300px;">
     <img src="https://github.com/andreaharit/immo-eliza-deployment/blob/main/img/streamlit_example.jpg" alt="Streamlit app" style="width: auto; height: 300px;">
@@ -85,7 +84,24 @@ Access the Streamlit web interface in your browser at http://localhost:8501.
 <a id="structure"></a>
 ## File structure 🗃️
 
+This is the general file structure of the repository:
 
+    ├─── dags
+    │   └───dag_immo_pipeline.py
+    ├───ml
+    │   ├───0-Resources 
+    │   ├───1-Scrape
+    │   ├───2-Merge
+    │   ├───3-Train
+    │   └───4-Predict_deploy
+    ├───Dockerfile
+    ├───docker-compose.yaml
+    └───requirements.txt
+
+The CSVs and model files are saved inside the 0-Resources directory.
+Scrape contains the code for the scrapper.
+Merge is the code for merging the latest CSV into the previous merged one.
+Train contains the code to train the ML model and, finally, Predict_deploy the code for the Streamlit app.
 
 ## Timeline 📅
 
