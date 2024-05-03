@@ -1,4 +1,3 @@
-# Imports
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.impute import KNNImputer
@@ -12,7 +11,8 @@ import logging
 
 
 def input_categorical (X_df, categorical):
-# Inputting, prevent errors for dropped columns that can't be inputted anymore
+# Inputting: 
+# None, the try/except prevents errors during manual tests of selecting which categorical columns stay or not
     try:         
 
         for category in categorical:  
@@ -35,7 +35,8 @@ def one_hot (X_df, categorical):
     return df, enc
 
 def KNN (X_df, k = 71):
-    # KNN imputation, must be done after one-hot encoding otherwise it doesnt recognize strings
+    # KNN imputation
+    # Note, it must be done after one-hot encoding because it doesnt do strings
     imputer = KNNImputer(missing_values = np.nan, n_neighbors=k, weights = "distance")
     X_df = imputer.fit_transform(X_df)
     return X_df
@@ -49,7 +50,8 @@ def scaler (X_df):
 
 class Process_for_model ():
     def __init__(self, X, y, categorical):
-
+        """Process the cleaned data to fit the random forest regression model"""
+        # Splitting
         X_train,X_test,y_train,y_test = train_test_split(X,y,random_state = 42, test_size = 0.2)
 
         self.categorical = categorical
@@ -72,20 +74,22 @@ class Process_for_model ():
         self.y_test = y_test
 
     def export_encoder (self, path_encoder):
+        """Exports encoder to pickle file, to be used in prediction/deployment"""
         logging.info("Exporting encoder...")
         joblib.dump(self.encoder, path_encoder)
 
     def export_scaler (self, path_scaler):
+        """Export scaler to pickle file, to be used in prediction/deployment""" 
         logging.info("Exporting scaler...")
         joblib.dump(self.scaler, path_scaler)
         
 
-class Process_all_dataset:
+class Process_all_dataset:    
     def __init__(self, X, y, categorical):
+        """Process all pipeline into the full dataset. Used in the phases of cross validation."""
         self.y = y
         self.categorical = categorical
-
-        # For X_train
+        
         X = input_categorical(X, categorical)
         X, dump_encoder = one_hot (X, categorical)
         
@@ -94,7 +98,9 @@ class Process_all_dataset:
 
 
 class predict:
+    
     def __init__(self, X, categorical):
+        """Class used for cleaning the input for prediction and outputting the prediction"""
         self.categorical = categorical
 
         # For X_train

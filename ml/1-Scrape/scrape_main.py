@@ -7,22 +7,25 @@ from src_scrape.scrape_house import ExtractPage, Single
 
 
 
-# python3 scrape_main.py --path_raw=../0-Resources/raw_test.csv --path_links=../0-Resources/links_test.csv
-
-
 @click.command()
 @click.option("--path_raw", help="Path to the raw CSV")
 @click.option("--path_links", help="Path to save the scrapped links CSV")
-def scrappe_all(path_raw, path_links):
-    # to do: fazer checagem de status de conexao e continuar tentando
+def scrappe_all(path_raw, path_links) -> None:
+    """
+    Scrapes house characteristics and dumps them into a csv file.
+    Args:
+        path_raw: csv path where the raw data with the houses characteristics will be saved.
+        path_links: csv path where the links for each house that were scrapped will be saved.
+    """
 
-    # Extracts links of first N pages (according to config) and dumps into file
+    # Extracts house links of first N homepages (according to config) and dumps into csv file
+    print("Extracting the links")
     extract_links = Links(outfile_links = path_links)
 
-    # Make csv to write each house characteristic
+    # Starts out csv file where we'll write each house characteristic
     outfile_houses = path_raw
     with open (outfile_houses, "w", newline='', encoding='utf-8') as file_house:  
-
+        # Collected fields
         fields = ['id', 'city', 'postal_code', 'district', 'province', 'price', 
                 'subtype', 'state_construction', 'living_area', 'terrace_area', 
                 'garden_area', 'rooms', 'bedrooms', 'bathrooms', 'livingroom_surface', 
@@ -31,14 +34,17 @@ def scrappe_all(path_raw, path_links):
                 'construction_year', 'epc', 'heating', 'area_total']
 
         writer = csv.DictWriter(file_house, fieldnames = fields)
-        # Writes header
+        # Writes its header
         writer.writeheader()
-        # Open links csv file
+
+        # Start collecting characteristcs from houses
+        # Open house listing links
+        print("Extracting the houses information...")
         with open(extract_links.outfile_links, 'r') as file_links:
             reader = csv.reader(file_links)
             # Skips the header
             next(reader, None)
-            # Loops every link in the links file
+            # Loops every link in the links file to extract each house characteristic
             for row in reader:
                 id_house = row[0]
                 link = row[1]  
@@ -78,6 +84,8 @@ def scrappe_all(path_raw, path_links):
                                     'heating': properties.heating, 
                                     'area_total': properties.land
                                     })
+            print("Finished extracting the houses information...")
+            
 if __name__ == "__main__":
     scrappe_all()
 

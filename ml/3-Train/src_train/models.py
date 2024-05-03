@@ -34,16 +34,25 @@ class Random_forest_reg (metrics):
         random_forest_regressor = RandomForestRegressor(n_estimators = trees, min_samples_leaf= samples)
         random_forest_regressor.fit(X_train,y_train)
 
-
         # Make predictions
         y_pred= random_forest_regressor.predict(X_test)
         y_pred_train= random_forest_regressor.predict(X_train)
 
         # Stores metrics as attributes
         super().__init__(y_train, y_pred_train, y_test, y_pred)
-
+        
+        # Stores model for exporting later
         self.model = random_forest_regressor
-        self.metrics = [self.name , self.r2_train, self.r2_test, self.rmse_train, self.rmse_test, self.mae_train, self.mae_test]
+        # Model metrics
+        self.metrics = { 
+            "model": self.name ,
+            "r2_train": self.r2_train, 
+            "r2_test" : self.r2_test, 
+            "rmse_train": self.rmse_train, 
+            "rmse_test": self.rmse_test, 
+            "mae_train": self.mae_train, 
+            "mae_test": self.mae_test
+        }
 
 
 

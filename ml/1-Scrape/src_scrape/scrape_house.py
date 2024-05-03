@@ -13,7 +13,7 @@ class ExtractPage:
             url (str): url of a listing in the website.
     """
     def __init__(self, house_id, house_url: str) -> None: 
-        # Sets up request with a random sleep to not get kicked out
+        # Sets up request with a random sleep to not get kicked out from server
         self.id= house_id
         time.sleep(random.random())
         
@@ -23,6 +23,7 @@ class ExtractPage:
             self.status = r.status_code
             if self.status == 200:
                 print(f"Success getting into house {self.id}")
+
                 # Parses html getting into a script tag, cleans it and dumps as a json
                 soup = BeautifulSoup(content, "html.parser")        
                 raw_data = soup.find("script", attrs={"type":"text/javascript"}).text.replace("window.classified = ","" ).replace(";", "").strip()
@@ -37,7 +38,7 @@ class ExtractPage:
                 self.website_status =  False       
 
     def is_single(self) -> bool: 
-        # Uses key "cluster" to filter if multiple or single       
+        # Uses key "cluster" to filter if house lisrting is multiple (nested houses) or single ad     
         if self.raw["cluster"] == "null" or self.raw["cluster"] == None:            
             self.is_single = True
         else:
@@ -53,6 +54,7 @@ class Single:
     def __init__(self, raw)->None:
 
         self.data = raw 
+        # Bunch of try/except in case the information is not available for a house, aka, key is missing
 
         # Numerical characteristics
         try:    
@@ -207,7 +209,7 @@ class Single:
             return None
 
     def zero_one (self, char_path, string_comp:str = None):
-        """Change valid value in json to a boolean."""
+        """Change value to a numeric boolean according to project specification."""
         char = self.validate(char_path)
         if char in [None, string_comp]:
             return 0

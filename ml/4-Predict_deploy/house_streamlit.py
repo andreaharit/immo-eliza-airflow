@@ -6,7 +6,7 @@ from src_deploy.plots import Plots
 from src_deploy.predict import Predict
 import sklearn
 
-from latest_files import latest_clean, latest_model, encoder, scaler
+from config import latest_clean, latest_model, encoder, scaler
 # run with:
 # streamlit run house_streamlit.py
 

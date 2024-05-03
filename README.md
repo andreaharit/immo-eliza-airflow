@@ -12,8 +12,9 @@ Previous stages were:
 - Deploying  an API and Streamlit to get a prediction using the chosen model from the previous step (Random Forest Regression). See [repository](https://github.com/andreaharit/immo-eliza-deployment).
 
 
-And now we are scheduling the webscrapping and machine learning pipelines into Airflow in a Docker-compose container to run daily.
-The scraper saves the links that were scrapped, the raw data about the houses in a dated csv file. Then it cleans the data and merges it into the accumulated dataset that will be used for the model training.
+And now we are scheduling the webscrapping (recoded comapared to the previous steps for simplification) and machine learning pipelines into Airflow in a Docker-compose to run daily.
+The scraper saves the links that were scrapped and the raw data about the houses in a dated csv file for later backup. Then it cleans the dataset and merges it into an file with the accumulated data that will be used for the model training.
+The model metrics as R2, MAE, 
 After that we use Streamlit to display the price prediction based on the latest trained model, and plots updated dataset in a separate Docker container.
 
 ## Table of Contents
@@ -28,7 +29,6 @@ After that we use Streamlit to display the price prediction based on the latest 
 <a id="Airflow"></a>
 ### Airflow ⌚
 </a> 
-
 
 To use the ML pipeline first, make sure your Docker Engine has sufficient memory allocated.
 
@@ -49,8 +49,7 @@ Access the Airflow web interface in your browser at http://localhost:8080 with:
 - Login: airflow
 - Password airflow
 
-
-Trigger the DAG immo_pipeline. If you are running attached, inside the log of the train_task it is possible to see the model scores. Otherwise, they will be printed on the terminal.
+And activate the dag immo_pipeline at the Airflow web interface.
 
 When you are finished working and want to clean up your environment, run:
 
@@ -61,6 +60,7 @@ When you are finished working and want to clean up your environment, run:
 ### Streamlit 🖱
 </a> 
 
+This is how the app looks like:
 
 <div style="max-height: 300px;">
     <img src="https://github.com/andreaharit/immo-eliza-deployment/blob/main/img/streamlit_example.jpg" alt="Streamlit app" style="width: auto; height: 300px;">
@@ -98,7 +98,7 @@ This is the general file structure of the repository:
     ├───docker-compose.yaml
     └───requirements.txt
 
-The CSVs and model files are saved inside the 0-Resources directory.
+The CSVs, model files and json with the model metrics are saved inside the 0-Resources directory.
 Scrape contains the code for the scrapper.
 Merge is the code for merging the latest CSV into the previous merged one.
 Train contains the code to train the ML model and, finally, Predict_deploy the code for the Streamlit app.

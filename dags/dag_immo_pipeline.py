@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
+from airflow.utils.dates import days_ago
 
 default_args = {
     "owner" : "Andrea",
@@ -13,7 +14,7 @@ with DAG(
     dag_id = "immo_pipeline",
     default_args = default_args,
     description = "Scrapping immoweb, training pipeline for houses in Belgium",
-    start_date = datetime(2024,5,2),
+    start_date = days_ago(1),
     schedule_interval= '@daily'
 
 ) as dag:
@@ -30,7 +31,8 @@ with DAG(
     'encoder_pickle' :  "/opt/airflow/ml/0-Resources/encoder.pkl",
     'scaler_pickle' : "/opt/airflow/ml/0-Resources/scaler.pkl",
     'model_dated_pickle' : f"/opt/airflow/ml/0-Resources/model_{today}.pkl",
-    'train_func' : "/opt/airflow/ml/3-Train/random_forest.py"    
+    'train_func' : "/opt/airflow/ml/3-Train/random_forest.py",
+    'metrics_json': "/opt/airflow/ml/0-Resources/metrics.json" 
     }
 
     task1= BashOperator(
@@ -45,7 +47,7 @@ with DAG(
     )
     task3= BashOperator(
         task_id = "train_task",
-        bash_command = "python3 {{ params.train_func }} --path_raw={{ params.raw_merged_csv }} --path_clean={{ params.clean_dated_csv }} --path_encoder={{ params.encoder_pickle }} --path_scaler={{ params.scaler_pickle }} --path_model={{ params.model_dated_pickle }}",
+        bash_command = "python3 {{ params.train_func }} --path_raw={{ params.raw_merged_csv }} --path_clean={{ params.clean_dated_csv }} --path_encoder={{ params.encoder_pickle }} --path_scaler={{ params.scaler_pickle }} --path_model={{ params.model_dated_pickle }} --path_metrics={{ params.metrics_json }}",
         params=path_params
     )
 
