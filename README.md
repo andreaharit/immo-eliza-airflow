@@ -14,7 +14,8 @@ Previous stages were:
 
 And now we are scheduling the webscrapping (recoded comapared to the previous steps for simplification) and machine learning pipelines into Airflow in a Docker-compose to run daily.
 The scraper saves the links that were scrapped and the raw data about the houses in a dated csv file for later backup. Then it cleans the dataset and merges it into an file with the accumulated data that will be used for the model training.
-The model metrics as R2, MAE, 
+For each run of the DAG, the model metrics (R2, MAE, RMSE), cross validation metrics and data metrics regarding price (average, variance, std) are outputted in a json file inside ```ml>02-Resources>metrics.json```.
+
 After that we use Streamlit to display the price prediction based on the latest trained model, and plots updated dataset in a separate Docker container.
 
 ## Table of Contents
