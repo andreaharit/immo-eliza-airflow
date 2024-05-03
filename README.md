@@ -14,7 +14,11 @@ Previous stages were:
 
 And now we are scheduling a webscrapping and machine learning pipeline via **Airflow** to run daily.
 
-The new scraped data is stored raw and dated for backup, as well as the acummulated cleaned data so far. Those are all inside the ```ml>0-Resources``` folder. Also a historical log of the model metrics and data for each run of the DAG.
+Inside the ```ml>0-Resources``` folder we keep the backup of:
+- The new scraped data (scrapped links and house information) that are stored raw and dated for backup as CSV files.
+- A CSV with the cleanned and acummulated data so far.
+- All generated models, dated. 
+- A json file with all the trained models so far and their metrics, dated.
 
 Finally, we use a containarized Streamlit to display the price prediction based on the latest trained model.
 
