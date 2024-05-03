@@ -17,21 +17,23 @@ And now we are scheduling a webscrapping and machine learning pipeline via **Air
 Inside the ```ml>0-Resources``` folder we keep the backup of:
 - The scraped data for each DAG run (scrapped links and house information) that will be stored raw in dated CSV file.
 - A CSV with the acummulated raw data collected in all runs, called ```raw_merged```.
-- All generated models, dated per run. 
-
-Example:
+- All generated models, dated per run. Example:
 <div>
     <img src="https://github.com/andreaharit/immo_airflow/blob/main/imgs/Resources.jpg" alt="Resources" style="width: 200px;">    
 </div>
 
-- A json file with all the models that ran so far and their metrics, dated.
+- A json file with all the models that ran so far and their metrics, dated. Example:
 <div>
     <img src="https://github.com/andreaharit/immo_airflow/blob/main/imgs/Metrics.jpg" alt="Metrics" style="width: 200px;">   
 </div>
 
-
-
 Finally, we use a containarized Streamlit to display the price prediction based on the latest trained model.
+
+
+<div style="max-height: 300px;">
+    <img src="https://github.com/andreaharit/immo-eliza-deployment/blob/main/img/streamlit_example.jpg" alt="Streamlit app" style="width: auto; height: 300px;">
+</div>
+
 
 ## Table of Contents
 
@@ -74,12 +76,6 @@ When you are finished working and want to clean up your environment, run:
 <a id="Streamlit"></a>
 ### Streamlit 🖱
 </a> 
-
-This is how the app looks like:
-
-<div style="max-height: 300px;">
-    <img src="https://github.com/andreaharit/immo-eliza-deployment/blob/main/img/streamlit_example.jpg" alt="Streamlit app" style="width: auto; height: 300px;">
-</div>
 
 To run streamlit navigate to the directory:
 
