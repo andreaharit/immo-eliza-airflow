@@ -97,6 +97,7 @@ Access the Streamlit web interface in your browser at http://localhost:8501.
 
 This is the general file structure of the repository:
 
+    ├─── imgs
     ├─── dags
     │   └───dag_immo_pipeline.py
     ├───ml
@@ -109,10 +110,11 @@ This is the general file structure of the repository:
     ├───docker-compose.yaml
     └───requirements.txt
 
-The CSVs, model files and json with the model metrics are saved inside the 0-Resources directory.
-Scrape contains the code for the scrapper.
-Merge is the code for merging the latest CSV into the previous merged one.
-Train contains the code to train the ML model and, finally, Predict_deploy the code for the Streamlit app.
+- The CSVs, model files and json with metrics are saved inside the ```0-Resources``` directory.
+- Scrape contains the code for the scrapper. This code is refactored compared to the first phase of the project.
+- Merge handles the merging the latest CSV into the previous merged one.
+- Train contains the code to train the ML model.
+- Predict_deploy the code for the Streamlit app.
 
 ## Timeline 📅
 
