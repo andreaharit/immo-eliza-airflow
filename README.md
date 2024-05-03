@@ -15,10 +15,21 @@ Previous stages were:
 And now we are scheduling a webscrapping and machine learning pipeline via **Airflow** to run daily.
 
 Inside the ```ml>0-Resources``` folder we keep the backup of:
-- The new scraped data (scrapped links and house information) that are stored raw and dated for backup as CSV files.
-- A CSV with the cleanned and acummulated data so far.
-- All generated models, dated. 
-- A json file with all the trained models so far and their metrics, dated.
+- The scraped data for each DAG run (scrapped links and house information) that will be stored raw in dated CSV file.
+- A CSV with the acummulated raw data collected in all runs, called ```raw_merged```.
+- All generated models, dated per run. 
+
+Example:
+<div>
+    <img src="https://github.com/andreaharit/immo_airflow/blob/main/imgs/Resources.jpg" alt="Resources" style="width: 200px;">    
+</div>
+
+- A json file with all the models that ran so far and their metrics, dated.
+<div>
+    <img src="https://github.com/andreaharit/immo_airflow/blob/main/imgs/Metrics.jpg" alt="Metrics" style="width: 200px;">   
+</div>
+
+
 
 Finally, we use a containarized Streamlit to display the price prediction based on the latest trained model.
 
