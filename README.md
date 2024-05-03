@@ -12,11 +12,15 @@ Previous stages were:
 - Deploying  an API and Streamlit to get a prediction using the chosen model from the previous step (Random Forest Regression). See [repository](https://github.com/andreaharit/immo-eliza-deployment).
 
 
-And now we are scheduling the webscrapping (recoded comapared to the previous steps for simplification) and machine learning pipelines into Airflow in a Docker-compose to run daily.
-The scraper saves the links that were scrapped and the raw data about the houses in a dated csv file for later backup. Then it cleans the dataset and merges it into an file with the accumulated data that will be used for the model training.
-For each run of the DAG, the model metrics (R2, MAE, RMSE), cross validation metrics and data metrics regarding price (average, variance, std) are outputted in a json file inside ```ml>02-Resources>metrics.json```.
+And now we are scheduling a webscrapping and machine learning pipeline via **Airflow** to run daily.
 
-After that we use Streamlit to display the price prediction based on the latest trained model, and plots updated dataset in a separate Docker container.
+Inside the ```ml>0-Resources``` folder we keep the backup of:
+- The new scraped data (scrapped links and house information) that are stored raw and dated for backup as CSV files.
+- A CSV with the cleanned and acummulated data so far.
+- All generated models, dated. 
+- A json file with all the trained models so far and their metrics, dated.
+
+Finally, we use a containarized Streamlit to display the price prediction based on the latest trained model.
 
 ## Table of Contents
 
@@ -55,7 +59,6 @@ And activate the dag immo_pipeline at the Airflow web interface.
 When you are finished working and want to clean up your environment, run:
 
     docker compose down --volumes --rmi all
-
 
 <a id="Streamlit"></a>
 ### Streamlit 🖱
